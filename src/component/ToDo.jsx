@@ -12,22 +12,19 @@ function ToDo() {
   function Submit() {
     var tempTask = TaskArray;
     if (Task) {
-      tempTask = [...tempTask, Task];
-      setTaskArray(tempTask);
+      setTaskArray([...tempTask, Task]);
     }
-
     setTask("");
-
-    console.log("after addition of element array" + tempTask);
+    //console.log(tempTask);
   }
   function Delete(index) {
-    console.log("index to be deleted" + index.target.id);
+    console.log(index.target.id);
     var ind = index.target.id;
-    // var tempList = [...TaskArray];
+    //var tempList = [...TaskArray];
     var temp = 0;
     var tempList = Array(TaskArray.length - 1);
-
-    for (let i = 0; i < TaskArray.length; i += 1) {
+    // tempList.splice(ind, 1);
+    for (let i = 0; i < TaskArray.length - 1; i++) {
       if (i === ind) {
         continue;
       } else {
@@ -35,9 +32,9 @@ function ToDo() {
         temp += 1;
       }
     }
-    //console.log("value to be deleted" + tempList.splice(ind, 1));
-    console.log("array after deletion" + tempList);
+
     setTaskArray(tempList);
+    console.log(temp);
   }
   return (
     <div className="App">
