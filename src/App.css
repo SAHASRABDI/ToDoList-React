@@ -1,5 +1,7 @@
 .App {
-  margin: 10px 10px 0px 0px;
+  background-color: rgb(91, 84, 184);
+  margin-left: 10px;
+
   box-sizing: border-box;
   max-width: 100wh;
 }
@@ -12,10 +14,35 @@
 .theList {
   word-break: break-all;
 }
-.task {
+
+.Wrapper {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
 }
-li {
-  flex: 7;
+.Wrapper li {
+  width: 92%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+.DeleteButton {
+  /* padding-left: 3%;
+  width: 10px;
+  height: 40px;
+  padding-right: 3%;
+  padding-top: 2px;
+
+  border-radius: 10%;
+  margin-right: 10px;
+  margin-left: 10px; */
+
+  /* margin-right: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
+  font-size: 20px; */
+  margin-right: 20px;
+  margin-left: 10px;
+  /* margin-top: 5px; */
 }

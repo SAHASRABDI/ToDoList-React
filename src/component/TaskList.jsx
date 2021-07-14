@@ -5,16 +5,17 @@ function TaskList(props) {
     <div>
       <ul className="theList">
         {props.arrayData.map((data, index) => (
-          <li key={index}>
-            {data}
+          <div key={index}>
+            <div className="Wrapper">
+              <li className="List-Wrapper">{data}</li>
 
-            <DeleteButton
-              identifier={index}
-              onClick={props.onClick}
-            ></DeleteButton>
-
-            <hr></hr>
-          </li>
+              <DeleteButton
+                identifier={index}
+                onClick={() => props.onClick(index)}
+              ></DeleteButton>
+            </div>
+            <br></br>
+          </div>
         ))}
       </ul>
     </div>

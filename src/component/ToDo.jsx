@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TaskList from "./TaskList";
 function ToDo() {
   const [TaskArray, setTaskArray] = useState([]);
   const [Task, setTask] = useState("");
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  });
 
   function Change(letters) {
     setTask(letters.target.value);
@@ -18,29 +23,37 @@ function ToDo() {
     //console.log(tempTask);
   }
   function Delete(index) {
-    console.log(index.target.id);
-    var ind = index.target.id;
+    // console.log(index.target.id);
+    //var ind = index.target.id;
     //var tempList = [...TaskArray];
     var temp = 0;
     var tempList = Array(TaskArray.length - 1);
     // tempList.splice(ind, 1);
-    for (let i = 0; i < TaskArray.length ; i++) {
-      if (i === ind) {
+    for (let i = 0; i < TaskArray.length; i += 1) {
+      if (i === index) {
         continue;
       } else {
         tempList[temp] = TaskArray[i];
         temp += 1;
       }
     }
-
+    tempList = [...tempList];
+    console.log(tempList);
     setTaskArray(tempList);
-    console.log(temp);
   }
   return (
-    <div className="App">
+    <div>
       <div className="InputPart">
         <h1>TO DO LIST</h1>
-        <h2>WANT TO ADD A TASK??</h2>
+        {TaskArray.length == 0 ? (
+          <div>
+            <h2 style={{ color: "white" }}>You have no task to do</h2>
+            <h2>WANT TO ADD A TASK??</h2>
+          </div>
+        ) : (
+          <h2>WANT TO ADD A ANOTHER TASK??</h2>
+        )}
+
         <div className="alignment">
           <textarea
             type="text"
@@ -51,6 +64,7 @@ function ToDo() {
             placeholder="TYPE HERE"
             onChange={Change}
             value={Task}
+            ref={inputRef}
           />
           <div>
             <button
@@ -62,9 +76,13 @@ function ToDo() {
               Add
             </button>
           </div>
+
+          <br></br>
         </div>
       </div>
-      <TaskList arrayData={TaskArray} onClick={Delete}></TaskList>
+      <div className="BorderDefine">
+        <TaskList arrayData={TaskArray} onClick={Delete}></TaskList>
+      </div>
     </div>
   );
 }
