@@ -24,7 +24,7 @@ function ToDo() {
     var temp = 0;
     var tempList = Array(TaskArray.length - 1);
     // tempList.splice(ind, 1);
-    for (let i = 0; i < TaskArray.length - 1; i++) {
+    for (let i = 0; i < TaskArray.length ; i++) {
       if (i === ind) {
         continue;
       } else {
